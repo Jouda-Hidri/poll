@@ -26,7 +26,7 @@ class PollControllerTest {
 
 	@Test
 	public void testFindByTitle() throws Exception {
-		mockMvc.perform(get("/poll").param("title", "Qui sont les superhéros Marvel les plus oufs?"))
+		mockMvc.perform(get("/poll").param("title", "Marvel"))
 				.andExpect(status().isOk());
 	}
 

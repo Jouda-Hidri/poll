@@ -42,7 +42,7 @@ class PollServiceTest {
 
 	@Test
 	void shouldFindPollsByTitle() {
-		List<PollDto> result = service.findByTitle("Qui sont les superhéros Marvel les plus oufs?");
+		List<PollDto> result = service.findByTitle("Marvel");
 
 		assertEquals(result.size(), 1);
 		assertEquals(result.get(0).getTitle(), "Qui sont les superhéros Marvel les plus oufs?");

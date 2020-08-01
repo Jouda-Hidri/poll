@@ -25,7 +25,7 @@ public class PollService {
 	}
 
 	public List<PollDto> findByTitle(String title) {
-		return pollRepo.findByTitle(title).stream().map(PollDto::new).collect(Collectors.toList());
+		return pollRepo.searchByTitle(title).stream().map(PollDto::new).collect(Collectors.toList());
 	}
 
 	public List<PollDto> findAfterDate(Date afterDate) {

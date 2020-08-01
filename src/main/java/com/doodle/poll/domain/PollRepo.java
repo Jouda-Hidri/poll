@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PollRepo extends CrudRepository<Poll, Integer> {
 
-	List<Poll> findByTitle(String title);
+	@Query("select p from Poll p where p.title like %:title%")
+	List<Poll> searchByTitle(String title);
 
 	@Query("select p from Poll p where p.initiated > :afterDate")
 	List<Poll> findAfterDate(@Param("afterDate") Date afterDate);
