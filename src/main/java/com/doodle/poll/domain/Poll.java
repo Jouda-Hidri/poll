@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -22,15 +24,18 @@ public class Poll {
 	@Id
 	private Integer id; // todo
 	private String adminKey;
-    private Timestamp  latestChange; // todo
-    private Timestamp  initiated; // todo
-	private int participantsCount; // todo
+	private Timestamp latestChange;
+	private Timestamp initiated;
+	private int participantsCount;
 	private int inviteesCount;
-	private String type; // todo enum
+	@Enumerated(EnumType.STRING)
+	private PollType type;
 	private boolean hidden;
-	private String preferencesType; // todo enum
-	private String state; // todo enum
-	private String locale; // todo enum
+	@Enumerated(EnumType.STRING)
+	private PreferencesType preferencesType;
+	@Enumerated(EnumType.STRING)
+	private State state;
+	private String locale;
 	private String title;
 	@ManyToOne
 	private Initiator initiator;
@@ -39,9 +44,11 @@ public class Poll {
 	private String optionHash;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "poll")
 	private Set<Participant> participants;
-	private String invitees; // todo list separation, assumption list of strings
-	private String device; // todo enum
-	private String levels; // todo enum
+	private String invitees;
+	@Enumerated(EnumType.STRING)
+	private Device device;
+	@Enumerated(EnumType.STRING)
+	private Levels levels;
 
 	public List<String> getInviteesList() {
 		if (invitees == null || invitees.trim().isEmpty()) { // todo isBlank

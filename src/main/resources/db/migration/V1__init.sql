@@ -59,9 +59,6 @@ INSERT INTO poll (id, admin_key, latest_change, initiated, participants_count, i
 (1, 'r44d7piq', '2020-08-01 16:12:28.0', '2020-08-01 16:13:15.0', 4, 0, 'TEXT', true, 'YESNO', 'OPEN', 'fr_CH', 'Qui sont les superhéros Marvel les plus oufs?', '509166a0b12ed8e4ec658f0060aaf38e', '', 'WEB', 'YESNO', 1);
 
 insert into participant (id, name, preferences, poll_id) values
-(981546885, 'Ringo', '0,1,1,1,0,1,1,0', 1);
-
-insert into participant (id, name, preferences, poll_id) values
 (981546885, 'Ringo', '0,1,1,1,0,1,1,0', 1),
 (2127452304, 'Ringo', '1,0,0', 1),
 (948182187, 'Ringo', '1,1,0', 1),
