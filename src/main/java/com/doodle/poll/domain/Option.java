@@ -11,7 +11,7 @@ import lombok.Getter;
 public class Option {
 	
 	@Id
-	private Long id; // not visible on dto
+	private Integer id; // not visible on dto
 	private String text;
 	private boolean available;
 	@ManyToOne

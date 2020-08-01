@@ -1,7 +1,6 @@
 package com.doodle.poll.service;
 
-import java.math.BigInteger;
-import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -27,20 +26,14 @@ public class PollService {
 				.collect(Collectors.toList());
 	}
 
-	public List<PollDto> findByTile(String title) {
+	public List<PollDto> findByTitle(String title) {
 		return pollRepo.findByTitle(title).stream().map(PollDto::new).collect(Collectors.toList());
 	}
-/*
-	public List<PollDto> findLaterThan(int afterDate) throws ParseException {
-		//SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		//Date date = formatter.parse(afterDate);
-		Iterable<Poll> iterable = pollRepo.findAll();
 
-		return StreamSupport.stream(iterable.spliterator(), false)
-				.filter(p -> p.getInitiated()> afterDate).map(PollDto::new)
-				.collect(Collectors.toList());
+	public List<PollDto> findAfterDate(Date afterDate) {
+		return pollRepo.findAfterDate(afterDate).stream().map(PollDto::new).collect(Collectors.toList());
 	}
-*/
+
 	public List<PollDto> findAll() {
 		Iterable<Poll> iterable = pollRepo.findAll();
 		return StreamSupport.stream(iterable.spliterator(), false).map(PollDto::new).collect(Collectors.toList());

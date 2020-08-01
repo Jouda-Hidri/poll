@@ -1,8 +1,6 @@
 package com.doodle.poll.api.dto;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.doodle.poll.domain.Participant;
 
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParticipantDto {
 
-	private int id; // todo
+	private Integer id; // todo
 	private String name;
 	private List<Integer> preferences;
 

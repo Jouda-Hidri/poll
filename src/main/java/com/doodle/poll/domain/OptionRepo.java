@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OptionRepo extends CrudRepository<Option, Long>{
+public interface OptionRepo extends CrudRepository<Option, Integer>{
 
 }

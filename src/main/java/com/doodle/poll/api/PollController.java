@@ -1,8 +1,8 @@
 package com.doodle.poll.api;
 
-import java.text.ParseException;
+import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,24 +18,21 @@ public class PollController {
 	@Autowired
 	private PollService service;
 
+// todo exception handling by the controller
 	@GetMapping("/")
-	public List<PollDto> findBy(@RequestParam(required = false) String user, @RequestParam(required = false) String title,
-			@RequestParam(required = false) Integer afterDate) {
+	public List<PollDto> findBy(@RequestParam(required = false) String user,
+			@RequestParam(required = false) String title, @RequestParam(required = false) Timestamp afterDate) {
+
 		if (user != null) {
 			return service.findByUser(user);
 		}
 		if (title != null) {
-			return service.findByTile(title);
+			return service.findByTitle(title);
 		}
-		/*
 		if (afterDate != null) {
-			try {
-				return service.findLaterThan(afterDate.intValue());
-			} catch (ParseException e) {
-				// return 400
-			}
-		}*/
-		return service.findAll();
+			return service.findAfterDate(afterDate);
+		}
 
+		return service.findAll();
 	}
 }

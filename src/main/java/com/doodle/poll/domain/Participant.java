@@ -16,7 +16,7 @@ import lombok.Getter;
 public class Participant {
 
 	@Id
-	private int id; // todo
+	private Integer id; // todo
 	private String name;
 	private String preferences;
 	@ManyToOne

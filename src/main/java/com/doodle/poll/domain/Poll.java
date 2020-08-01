@@ -1,12 +1,14 @@
 package com.doodle.poll.domain;
 
-import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,10 +20,10 @@ import lombok.Getter;
 public class Poll {
 
 	@Id
-	private String id; // todo
+	private Integer id; // todo
 	private String adminKey;
-	private BigInteger latestChange; // todo
-	private BigInteger initiated; // todo
+    private Timestamp  latestChange; // todo
+    private Timestamp  initiated; // todo
 	private int participantsCount; // todo
 	private int inviteesCount;
 	private String type; // todo enum
@@ -32,11 +34,11 @@ public class Poll {
 	private String title;
 	@ManyToOne
 	private Initiator initiator;
-	@OneToMany(mappedBy = "poll")
-	private List<Option> options;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "poll")
+	private Set<Option> options;
 	private String optionHash;
-	@OneToMany(mappedBy = "poll")
-	private List<Participant> participants;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "poll")
+	private Set<Participant> participants;
 	private String invitees; // todo list separation, assumption list of strings
 	private String device; // todo enum
 	private String levels; // todo enum

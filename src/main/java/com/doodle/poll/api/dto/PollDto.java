@@ -1,7 +1,6 @@
 package com.doodle.poll.api.dto;
 
-import java.math.BigInteger;
-import java.util.Arrays;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,10 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PollDto {
 
-	private String id; // todo
+	private Integer id; // todo
 	private String adminKey;
-	private BigInteger latestChange; // todo
-	private BigInteger initiated; // todo
+	private Timestamp latestChange; // todo
+	private Timestamp initiated; // todo
 	private int participantsCount; // todo
 	private int inviteesCount;
 	private String type; // todo enum
