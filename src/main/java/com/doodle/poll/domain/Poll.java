@@ -22,7 +22,7 @@ import lombok.Getter;
 public class Poll {
 
 	@Id
-	private Integer id; // todo
+	private Integer id;
 	private String adminKey;
 	private Timestamp latestChange;
 	private Timestamp initiated;
@@ -51,10 +51,9 @@ public class Poll {
 	private Levels levels;
 
 	public List<String> getInviteesList() {
-		if (invitees == null || invitees.trim().isEmpty()) { // todo isBlank
+		if (invitees == null || invitees.trim().isEmpty()) {
 			return new ArrayList<String>();
 		}
-		return Arrays.stream(invitees.split(",")) //
-				.collect(Collectors.toList());
+		return Arrays.stream(invitees.split(",")).collect(Collectors.toList());
 	}
 }

@@ -16,19 +16,17 @@ import lombok.Getter;
 public class Participant {
 
 	@Id
-	private Integer id; // todo
+	private Integer id;
 	private String name;
 	private String preferences;
 	@ManyToOne
 	private Poll poll;
 
 	public List<Integer> getPreferencesList() {
-		if (preferences == null || preferences.trim().isEmpty()) { // todo isBlank
+		if (preferences == null || preferences.trim().isEmpty()) {
 			return new ArrayList<Integer>();
 		}
-		return Arrays.stream(preferences.split(",")) //
-				.map(s -> Integer.parseInt(s)) //
-				.collect(Collectors.toList());
+		return Arrays.stream(preferences.split(",")).map(s -> Integer.parseInt(s)).collect(Collectors.toList());
 	}
 
 }

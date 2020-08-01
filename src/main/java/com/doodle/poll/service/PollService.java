@@ -3,13 +3,11 @@ package com.doodle.poll.service;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
 import com.doodle.poll.api.dto.PollDto;
 import com.doodle.poll.domain.InitiatorRepo;
-import com.doodle.poll.domain.Poll;
 import com.doodle.poll.domain.PollRepo;
 
 import lombok.RequiredArgsConstructor;
@@ -33,10 +31,4 @@ public class PollService {
 	public List<PollDto> findAfterDate(Date afterDate) {
 		return pollRepo.findAfterDate(afterDate).stream().map(PollDto::new).collect(Collectors.toList());
 	}
-
-	public List<PollDto> findAll() {
-		Iterable<Poll> iterable = pollRepo.findAll();
-		return StreamSupport.stream(iterable.spliterator(), false).map(PollDto::new).collect(Collectors.toList());
-	}
-
 }

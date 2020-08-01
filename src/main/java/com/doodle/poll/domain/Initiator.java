@@ -14,9 +14,8 @@ import lombok.Getter;
 public class Initiator {
 
 	@Id
-	private Integer id; // not exposed to api
+	private Integer id;
 	private String name;
-	// email could be defined as id
 	private String email;
 	private boolean notify;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "initiator")

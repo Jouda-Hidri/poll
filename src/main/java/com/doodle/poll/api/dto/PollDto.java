@@ -2,7 +2,6 @@ package com.doodle.poll.api.dto;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 import com.doodle.poll.domain.Device;
@@ -19,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PollDto {
 
-	private Integer id; // todo
+	private Integer id;
 	private String adminKey;
 	private Timestamp latestChange;
 	private Timestamp initiated;

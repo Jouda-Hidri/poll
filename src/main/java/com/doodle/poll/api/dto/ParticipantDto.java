@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParticipantDto {
 
-	private Integer id; // todo
+	private Integer id;
 	private String name;
 	private List<Integer> preferences;
 
