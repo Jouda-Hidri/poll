@@ -1,6 +1,7 @@
 package com.doodle.poll.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,7 +12,8 @@ import lombok.Getter;
 public class Option {
 	
 	@Id
-	private Integer id;
+	@GeneratedValue
+	private Long id;
 	private String text;
 	private boolean available;
 	@ManyToOne

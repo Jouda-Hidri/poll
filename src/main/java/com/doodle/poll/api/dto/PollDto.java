@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PollDto {
 
-	private Integer id;
+	private String id;
 	private String adminKey;
 	private Timestamp latestChange;
 	private Timestamp initiated;

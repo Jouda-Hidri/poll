@@ -22,7 +22,7 @@ import lombok.Getter;
 public class Poll {
 
 	@Id
-	private Integer id;
+	private String id;
 	private String adminKey;
 	private Timestamp latestChange;
 	private Timestamp initiated;

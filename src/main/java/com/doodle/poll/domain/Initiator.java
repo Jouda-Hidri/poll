@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -14,7 +15,8 @@ import lombok.Getter;
 public class Initiator {
 
 	@Id
-	private Integer id;
+	@GeneratedValue
+	private Long id;
 	private String name;
 	private String email;
 	private boolean notify;
