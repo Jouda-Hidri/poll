@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.Getter;
+
+@Getter
 @Entity
 public class Option {
 	

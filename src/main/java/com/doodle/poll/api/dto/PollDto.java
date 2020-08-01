@@ -1,7 +1,9 @@
 package com.doodle.poll.api.dto;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.doodle.poll.domain.Poll;
 
@@ -45,12 +47,13 @@ public class PollDto {
 		this.state = poll.getState();
 		this.locale = poll.getLocale();
 		this.title = poll.getTitle();
-		// this.initiator = new Initiator(this.initiator);
-		/*
-		 * List<OptionDto> options; private String optionHash; private
-		 * List<ParticipantDto> participants; private List<String> invitees; private
-		 * String device; // todo enum private String levels;
-		 * 
-		 */
+		this.initiator = new InitiatorDto(poll.getInitiator());
+		this.options = poll.getOptions().stream().map(OptionDto::new).collect(Collectors.toList());
+		this.optionHash = poll.getOptionHash();
+		this.participants = poll.getParticipants().stream().map(ParticipantDto::new).collect(Collectors.toList());
+		this.invitees = poll.getInviteesList();
+		this.device = poll.getDevice();
+
 	}
+
 }
