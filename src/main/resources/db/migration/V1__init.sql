@@ -79,7 +79,7 @@ insert into participant (id, name, preferences, poll_id) values
 (104345741, 'Ringo', '0,0,1', 'ps5878bwv3eyxkzm'),
 (624685408, 'Ringo', '0,1,1', 'ps5878bwv3eyxkzm'),
 (422536049, 'Ringo', '0,0,1', 'ps5878bwv3eyxkzm'),
-(251375214, 'John', '1', 'kvckhe3m5xaiw6fa'),
+(251375214, 'John', '1,0', 'kvckhe3m5xaiw6fa'),
 (1495351908, 'Ringo', '1,1,1', 'h75eeaudhf3tf3v3'),
 (1787688313, 'Ringo', '1', 'h75eeaudhf3tf3v3'),
 (1675723511, 'Ringo', '0,0,1,0,1', 'h75eeaudhf3tf3v3');

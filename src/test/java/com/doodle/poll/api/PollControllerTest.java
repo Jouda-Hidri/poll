@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.doodle.poll.api.dto.InitiatorDto;
 import com.doodle.poll.api.dto.OptionDto;
+import com.doodle.poll.api.dto.ParticipantDto;
 import com.doodle.poll.api.dto.PollDto;
 import com.doodle.poll.domain.Device;
 import com.doodle.poll.domain.Levels;
@@ -50,6 +51,8 @@ public class PollControllerTest {
 		InitiatorDto initiator = poll.getInitiator();
 		assertEquals("mh+sample@doodle.com", initiator.getEmail());
 		assertEquals("John Doe", initiator.getName());
+		assertEquals("r44d7piq", poll.getAdminKey());
+		assertEquals(true, poll.isHidden());
 		assertEquals(PollType.TEXT, poll.getType());
 		assertEquals(PreferencesType.YESNO, poll.getPreferencesType());
 		assertEquals(State.OPEN, poll.getState());
@@ -72,6 +75,7 @@ public class PollControllerTest {
 		assertEquals(2, polls.size());
 		assertEquals("Qui sont les superhéros Marvel les plus oufs?", polls.get(0).getTitle());
 		assertEquals(1, polls.get(0).getOptions().size());
+		assertEquals("509166a0b12ed8e4ec658f0060aaf38e", polls.get(0).getOptionHash());
 		final OptionDto option1 = polls.get(0).getOptions().get(0);
 		assertEquals(null, option1.getStart());
 		assertEquals(null, option1.getEnd());
@@ -82,6 +86,7 @@ public class PollControllerTest {
 		assertEquals(true, option1.isAvailable());
 		assertEquals("Pluto is a planet", option1.getText());
 		assertEquals("Who are the most badass Marvel superheroes?", polls.get(1).getTitle());
+		assertEquals("509166a0b12ed8e4ec658f0060aaf38e", polls.get(1).getOptionHash());
 		assertEquals(1, polls.get(0).getOptions().size());
 		final OptionDto option2 = polls.get(1).getOptions().get(0);
 		assertEquals(Timestamp.valueOf("2020-08-02 10:55:13.0"), option2.getStart());
@@ -92,6 +97,12 @@ public class PollControllerTest {
 		assertEquals(Timestamp.valueOf("2020-08-02 10:54:37.0"), option2.getEndDate());
 		assertEquals(true, option2.isAvailable());
 		assertEquals(null, option2.getText());
+		assertEquals(1, polls.get(1).getParticipants().size());
+		final ParticipantDto participant = polls.get(1).getParticipants().get(0);
+		assertEquals("John", participant.getName());
+		assertEquals(2, participant.getPreferences().size());
+		assertEquals(Integer.valueOf(1), participant.getPreferences().get(0));
+		assertEquals(Integer.valueOf(0), participant.getPreferences().get(1));
 	}
 
 	@Test
