@@ -1,29 +1,29 @@
 
 CREATE TABLE initiator (
   id BIGINT PRIMARY KEY,
-  name varchar(255),
-  email varchar(255),
+  name VARCHAR(255),
+  email VARCHAR(255),
   notify BOOLEAN
 );
 
 CREATE TABLE poll (
-  id varchar(255) PRIMARY KEY, 
-  admin_key varchar(255),
+  id VARCHAR(255) PRIMARY KEY, 
+  admin_key VARCHAR(255),
   latest_change TIMESTAMP,
   initiated TIMESTAMP,
   participants_count INTEGER,
   invitees_count INTEGER,
-  type varchar(255), 
+  type VARCHAR(255), 
   hidden BOOLEAN,
-  preferences_type varchar(255), 
-  state varchar(255), 
-  locale varchar(255), 
-  title varchar(255), 
-  description varchar(255),
-  option_hash varchar(255),
-  invitees varchar(255),
-  device varchar(255), 
-  levels varchar(255),
+  preferences_type VARCHAR(255), 
+  state VARCHAR(255), 
+  locale VARCHAR(255), 
+  title VARCHAR(255), 
+  description VARCHAR(255),
+  option_hash VARCHAR(255),
+  invitees VARCHAR(255),
+  device VARCHAR(255), 
+  levels VARCHAR(255),
   initiator_id INTEGER
 );
 
@@ -33,9 +33,9 @@ ALTER TABLE poll
 
 CREATE TABLE participant (
   id BIGINT PRIMARY KEY,
-  name varchar(255),
-  preferences varchar(255),
-  poll_id varchar(255)
+  name VARCHAR(255),
+  preferences VARCHAR(255),
+  poll_id VARCHAR(255)
 );
 
 ALTER TABLE participant
@@ -44,9 +44,15 @@ ALTER TABLE participant
 
 CREATE TABLE option (
   id BIGINT PRIMARY KEY,
-  text varchar(255),
+  text VARCHAR(255),
+  start TIMESTAMP,
+  end TIMESTAMP,
+  allday BOOLEAN,
+  start_date TIMESTAMP,
+  end_date TIMESTAMP,
   available BOOLEAN,
-  poll_id varchar(255)
+  type VARCHAR(255),
+  poll_id VARCHAR(255)
 );
 
 ALTER TABLE option
@@ -77,5 +83,8 @@ insert into participant (id, name, preferences, poll_id) values
 (1787688313, 'Ringo', '1', 'h75eeaudhf3tf3v3'),
 (1675723511, 'Ringo', '0,0,1,0,1', 'h75eeaudhf3tf3v3');
 
-insert into option (id, text, available, poll_id) values
-(1, 'Pluto is a planet', true, 'xsd4cv89t5f5um4b'); -- todo the other options
+insert into option (id, text, available, type, poll_id) values
+(1, 'Pluto is a planet', true, 'Text', 'xsd4cv89t5f5um4b');
+
+insert into option (id, start, end, allday, start_date, end_date, available, type, poll_id) values
+(2, '2020-08-02 10:55:13.0', '2020-08-02 10:52:54.0', true, '2020-08-02 10:53:46.0', '2020-08-02 10:54:37.0', true, 'Date', 'kvckhe3m5xaiw6fa');

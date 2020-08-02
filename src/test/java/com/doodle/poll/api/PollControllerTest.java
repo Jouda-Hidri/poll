@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.doodle.poll.api.dto.InitiatorDto;
+import com.doodle.poll.api.dto.OptionDto;
 import com.doodle.poll.api.dto.PollDto;
 import com.doodle.poll.domain.Device;
 import com.doodle.poll.domain.Levels;
@@ -70,8 +71,25 @@ public class PollControllerTest {
 
 		assertEquals(2, polls.size());
 		assertEquals("Qui sont les superhéros Marvel les plus oufs?", polls.get(0).getTitle());
+		assertEquals(1, polls.get(0).getOptions().size());
+		final OptionDto option1 = polls.get(0).getOptions().get(0);
+		assertEquals(null, option1.getStart());
+		assertEquals(null, option1.getEnd());
+		assertEquals(null, option1.getAllday());
+		assertEquals(null, option1.getStartDate());
+		assertEquals(null, option1.getEndDate());
+		assertEquals(true, option1.isAvailable());
+		assertEquals("Pluto is a planet", option1.getText());
 		assertEquals("Who are the most badass Marvel superheroes?", polls.get(1).getTitle());
-
+		assertEquals(1, polls.get(0).getOptions().size());
+		final OptionDto option2 = polls.get(1).getOptions().get(0);
+		assertEquals(Timestamp.valueOf("2020-08-02 10:55:13.0"), option2.getStart());
+		assertEquals(Timestamp.valueOf("2020-08-02 10:52:54.0"), option2.getEnd());
+		assertEquals(true, option2.getAllday());
+		assertEquals(Timestamp.valueOf("2020-08-02 10:53:46.0"), option2.getStartDate());
+		assertEquals(Timestamp.valueOf("2020-08-02 10:54:37.0"), option2.getEndDate());
+		assertEquals(true, option2.isAvailable());
+		assertEquals(null, option2.getText());
 	}
 
 	@Test
