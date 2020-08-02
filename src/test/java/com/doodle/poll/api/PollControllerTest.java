@@ -76,6 +76,7 @@ public class PollControllerTest {
 		assertEquals(null, option1.getStart());
 		assertEquals(null, option1.getEnd());
 		assertEquals(null, option1.getAllday());
+		assertEquals(null, option1.getDate());
 		assertEquals(null, option1.getStartDate());
 		assertEquals(null, option1.getEndDate());
 		assertEquals(true, option1.isAvailable());
@@ -86,6 +87,7 @@ public class PollControllerTest {
 		assertEquals(Timestamp.valueOf("2020-08-02 10:55:13.0"), option2.getStart());
 		assertEquals(Timestamp.valueOf("2020-08-02 10:52:54.0"), option2.getEnd());
 		assertEquals(true, option2.getAllday());
+		assertEquals(null, option1.getDate());
 		assertEquals(Timestamp.valueOf("2020-08-02 10:53:46.0"), option2.getStartDate());
 		assertEquals(Timestamp.valueOf("2020-08-02 10:54:37.0"), option2.getEndDate());
 		assertEquals(true, option2.isAvailable());

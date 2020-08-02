@@ -14,6 +14,7 @@ public class OptionDate extends Option {
 	private Timestamp start;
     private Timestamp end;
     private boolean allday;
+    private Timestamp date;
     private Timestamp startDate;
     private Timestamp endDate;
 }

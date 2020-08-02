@@ -48,6 +48,7 @@ CREATE TABLE option (
   start TIMESTAMP,
   end TIMESTAMP,
   allday BOOLEAN,
+  date TIMESTAMP,
   start_date TIMESTAMP,
   end_date TIMESTAMP,
   available BOOLEAN,

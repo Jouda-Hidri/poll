@@ -19,6 +19,7 @@ public class OptionDto {
 	private Timestamp start;
 	private Timestamp end;
 	private Boolean allday;
+	private Timestamp date;
 	private Timestamp startDate;
 	private Timestamp endDate;
 	private boolean available;
@@ -34,6 +35,7 @@ public class OptionDto {
 			this.start = ((OptionDate) option).getStart();
 			this.end = ((OptionDate) option).getEnd();
 			this.allday = ((OptionDate) option).isAllday();
+			this.date = ((OptionDate) option).getDate();
 			this.startDate = ((OptionDate) option).getStartDate();
 			this.endDate = ((OptionDate) option).getEndDate();
 		}
