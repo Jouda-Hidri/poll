@@ -46,7 +46,7 @@ CREATE TABLE option (
   id BIGINT PRIMARY KEY,
   text VARCHAR(255),
   start TIMESTAMP,
-  end TIMESTAMP,
+  option_end TIMESTAMP,
   allday BOOLEAN,
   date TIMESTAMP,
   start_date TIMESTAMP,
@@ -87,5 +87,5 @@ insert into participant (id, name, preferences, poll_id) values
 insert into option (id, text, available, type, poll_id) values
 (1, 'Pluto is a planet', true, 'Text', 'xsd4cv89t5f5um4b');
 
-insert into option (id, start, end, allday, start_date, end_date, available, type, poll_id) values
+insert into option (id, start, option_end, allday, start_date, end_date, available, type, poll_id) values
 (2, '2020-08-02 10:55:13.0', '2020-08-02 10:52:54.0', true, '2020-08-02 10:53:46.0', '2020-08-02 10:54:37.0', true, 'Date', 'kvckhe3m5xaiw6fa');
