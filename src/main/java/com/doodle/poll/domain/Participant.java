@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -18,6 +19,7 @@ public class Participant {
 	@Id
 	private Long id;
 	private String name;
+	@Setter
 	private String preferences;
 	@ManyToOne
 	private Poll poll;

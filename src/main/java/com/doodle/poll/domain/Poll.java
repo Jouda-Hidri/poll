@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -45,6 +46,7 @@ public class Poll {
 	private String optionHash;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "poll")
 	private Set<Participant> participants;
+	@Setter
 	private String invitees;
 	@Enumerated(EnumType.STRING)
 	private Device device;
