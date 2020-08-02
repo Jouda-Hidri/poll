@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,6 +14,6 @@ public interface PollRepo extends CrudRepository<Poll, Long> {
 	List<Poll> searchByTitle(String title);
 
 	@Query("select p from Poll p where p.initiated > :afterDate")
-	List<Poll> findAfterDate(@Param("afterDate") Date afterDate);
+	List<Poll> findAfterDate(Date afterDate);
 
 }

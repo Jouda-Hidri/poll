@@ -1,5 +1,4 @@
 FROM openjdk:8-jdk-alpine
-MAINTAINER experto.com
 VOLUME /tmp
 EXPOSE 8080
 ADD target/poll-0.0.1-SNAPSHOT.jar app.jar
