@@ -13,7 +13,7 @@
 	<artifactId>poll</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>poll</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Poll Restful API</description>
 
 	<properties>
 		<java.version>1.8</java.version>

@@ -24,7 +24,7 @@ public class PollController {
 	@Autowired
 	private PollService service;
 
-	@Operation(summary = "List all polls by title or created by a given  user or after a given date")
+	@Operation(summary = "List all polls by given title or created by a given  user or after a given date")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Found the polls", content = {
 					@Content(mediaType = "application/json") }),
