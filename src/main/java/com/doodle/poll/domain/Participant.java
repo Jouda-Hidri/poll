@@ -23,7 +23,7 @@ public class Participant {
 	private Poll poll;
 
 	public List<Integer> getPreferencesList() {
-		if (preferences == null || preferences.trim().isEmpty()) {
+		if (preferences == null) {
 			return new ArrayList<Integer>();
 		}
 		return Arrays.stream(preferences.split(",")).map(s -> Integer.parseInt(s)).collect(Collectors.toList());

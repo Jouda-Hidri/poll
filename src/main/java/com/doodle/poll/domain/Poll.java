@@ -37,6 +37,7 @@ public class Poll {
 	private State state;
 	private String locale;
 	private String title;
+	private String description;
 	@ManyToOne
 	private Initiator initiator;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "poll")
@@ -51,7 +52,7 @@ public class Poll {
 	private Levels levels;
 
 	public List<String> getInviteesList() {
-		if (invitees == null || invitees.trim().isEmpty()) {
+		if (invitees == null) {
 			return new ArrayList<String>();
 		}
 		return Arrays.stream(invitees.split(",")).collect(Collectors.toList());

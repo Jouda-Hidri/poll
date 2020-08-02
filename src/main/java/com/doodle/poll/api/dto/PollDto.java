@@ -10,11 +10,14 @@ import com.doodle.poll.domain.Poll;
 import com.doodle.poll.domain.PollType;
 import com.doodle.poll.domain.PreferencesType;
 import com.doodle.poll.domain.State;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@JsonInclude(Include.NON_NULL)
 @NoArgsConstructor
 public class PollDto {
 
@@ -30,6 +33,7 @@ public class PollDto {
 	private State state;
 	private String locale;
 	private String title;
+	private String description;
 	private InitiatorDto initiator;
 	private List<OptionDto> options;
 	private String optionHash;
