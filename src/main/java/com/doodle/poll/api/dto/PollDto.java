@@ -2,6 +2,7 @@ package com.doodle.poll.api.dto;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.doodle.poll.domain.Device;
@@ -54,7 +55,8 @@ public class PollDto {
 		this.preferencesType = poll.getPreferencesType();
 		this.state = poll.getState();
 		this.locale = poll.getLocale();
-		this.title = poll.getTitle();
+		this.title = unescape(poll.getTitle());
+		this.description = unescape(poll.getDescription());
 		this.initiator = new InitiatorDto(poll.getInitiator());
 		this.options = poll.getOptions().stream().map(OptionDto::new).collect(Collectors.toList());
 		this.optionHash = poll.getOptionHash();
@@ -62,6 +64,10 @@ public class PollDto {
 		this.invitees = poll.getInviteesList();
 		this.device = poll.getDevice();
 		this.levels = poll.getLevels();
+	}
+
+	private String unescape(final String escaped) {
+		return Optional.ofNullable(escaped).map(s -> s.replace("\\\\", "\\")).orElse(null);
 	}
 
 }
