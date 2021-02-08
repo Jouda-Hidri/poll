@@ -10,10 +10,12 @@ services:
       - dbpostgresql
   dbpostgresql:
     image: postgres
+    container_name: dbpostgresql
     ports:
       - "5432:5432"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
+      #- SPRING_PROFILES_ACTIVE=docker
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=polldb
+    #command: --spring.profiles.active=docker
