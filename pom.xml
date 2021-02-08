@@ -77,8 +77,129 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>${dockermavenplugin.version}</version>
+
+						<configuration>
+							<verbose>true</verbose>
+							<images>
+								<image>
+									<name>${docker.image.mysql}</name>
+									<alias>local-mysql-database</alias>
+									<run>
+										<env>
+											<MYSQL_ROOT_PASSWORD>${docker.image.mysql.root.password}</MYSQL_ROOT_PASSWORD>
+											<MYSQL_DATABASE>${docker.image.mysql.database}</MYSQL_DATABASE>
+											<MYSQL_USER>${docker.image.mysql.user}</MYSQL_USER>
+											<MYSQL_PASSWORD>${docker.image.mysql.password}</MYSQL_PASSWORD>
+										</env>
+										<ports>
+											<port>${docker.image.mysql.portmapping}</port>
+										</ports>
+										<wait>
+											<log>MySQL init process done. Ready for start up.</log>
+											<time>8000</time>
+										</wait>
+									</run>
+								</image>
+
+								<image>
+									<name>${docker.image.mongo}</name>
+									<alias>local-mongo-database</alias>
+									<run>
+										<env>
+											<MONGODB_DBNAME>${docker.image.mongo.database}</MONGODB_DBNAME>
+										</env>
+										<ports>
+											<port>${docker.image.mongo.portmapping}</port>
+										</ports>
+									</run>
+								</image>
+
+								<image>
+									<name>${docker.image.redis}</name>
+									<alias>local-redis-cache</alias>
+									<run>
+										<ports>
+											<port>${docker.image.redis.portmapping}</port>
+										</ports>
+									</run>
+								</image>
+
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<id>container-start</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+									<goal>start</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>container-stop</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unit-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<excludes>
+								<exclude>**/*IT.java</exclude>
+							</excludes>
+							<includes>
+								<include>**/*Test.java</include>
+							</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>integration-test</phase>
+						<configuration>
+							<excludes>
+								<exclude>none</exclude>
+							</excludes>
+							<includes>
+								<include>**/*IT.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
